@@ -122,4 +122,17 @@ research/object_detection/protos/ssd_pb2.py
 research/object_detection/protos/string_int_label_map_pb2.py
 research/object_detection/protos/train_pb2.py
 
+# ignore cocoa api
+research/cocoapi/
+research/pycocotools/
+
+# ignore research data
+research/data/
+research/output/
+
+# ignore training data
+research/annotations/
+research/images/
+
+
 
