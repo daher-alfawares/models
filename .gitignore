@@ -127,7 +127,7 @@ research/cocoapi/
 research/pycocotools/
 
 # ignore research data
-research/data/
+#research/data/
 research/output/
 
 # ignore training data
