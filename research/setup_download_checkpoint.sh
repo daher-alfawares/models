@@ -8,6 +8,6 @@ tar -xvf $PRETRAINED_MODEL.tar.gz
 [ -d data ] || mkdir data
 cp ./$PRETRAINED_MODEL/model.ckpt.* ./data/
 
-rm -rf
+rm -rf $PRETRAINED_MODEL.tar.gz
 rm -rf ./$PRETRAINED_MODEL/
 

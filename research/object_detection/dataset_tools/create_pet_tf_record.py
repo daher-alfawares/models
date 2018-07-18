@@ -209,7 +209,22 @@ def dict_to_tf_example(data,
 
   example = tf.train.Example(features=tf.train.Features(feature=feature_dict))
   return example
-
+def read_examples_list(path):
+  """Read list of training or validation examples.
+  The file is assumed to contain a single example per line where the first
+  token in the line is an identifier that allows us to find the image and
+  annotation xml for that example.
+  For example, the line:
+  xyz 3
+  would allow us to find files xyz.jpg and xyz.xml (the 3 would be ignored).
+  Args:
+    path: absolute path to examples list file.
+  Returns:
+    list of example identifiers (strings).
+  """
+  with open(path) as fid:
+    lines = fid.read().splitlines()
+  return lines
 
 def create_tf_record(output_filename,
                      num_shards,
@@ -274,7 +289,7 @@ def main(_):
   image_dir = os.path.join(data_dir, 'images')
   annotations_dir = os.path.join(data_dir, 'annotations')
   examples_path = os.path.join(annotations_dir, 'trainval.txt')
-  examples_list = dataset_util.read_examples_list(examples_path)
+  examples_list = read_examples_list(examples_path)
 
   # Test images are not included in the downloaded data set, so we shall perform
   # our own split.
@@ -316,3 +331,4 @@ def main(_):
 
 if __name__ == '__main__':
   tf.app.run()
+
